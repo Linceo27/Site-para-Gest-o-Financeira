@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>teste</title>
+</head>
+<body>
+<header>
+    <h1>
+        Lista de alunos
+    </h1>
+</header>
+
+<script>
+    class Node{
+        constructor(objeto){
+            this.proximo = null
+            this.anterior = null
+            this.objeto = objeto
+        }
+    }
+
+    class Lista{
+        constructor(){
+            this.inicio = null 
+            this.fim = null
+        }
+
+        inserir(alunos){
+            alunos = document.getElementById("#campo")
+            let aluno = new Node(alunos)
+            if(this.inicio == null){
+                this.inicio = aluno
+                this.fim = this.inicio
+            }else{
+                this.fim.proximo = aluno
+                aluno.anterior = this.fim
+                this.fim = aluno
+            }
+        }
+
+        remover(){
+            this.fim = this.fim.anterior
+            this.fim.proximo = null
+        }
+
+        imprimir(){
+
+            let imp = this.inicio
+            while (imp != null){
+                console.log(imp.objeto)
+                imp = imp.proximo
+            }
+        }
+    }
+ let lista = new Lista()
+
+</script>
+
+<form action="">
+    <input type="text" id="campo" placeholder="Digite o nome do Aluno">
+    <button type ="submit" onclick= "inserir()" >inserir</button>
+    <button type="submit" onclick="remover()" >remover</button>
+    <button  onclick="lista.imprimir()" >imprimir</button>
+
+</form>
+
+<script>
+  let a = lista.imprimir()
+  function imp (){
+    console.log("dale")
+  }
+
+</script>
+ <button onclick = "imp()">imp</button>
+</body>
+</html>
